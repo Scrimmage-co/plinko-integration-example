@@ -1,4 +1,4 @@
-import plinkoLogo from '@images/logo.svg'
+import plinkoLogo from '@images/scrimmageLogo.png'
 
 export function Footer() {
   return (

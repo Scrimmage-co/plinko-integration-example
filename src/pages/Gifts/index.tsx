@@ -15,24 +15,24 @@ export function Gifts() {
     <div className="flex h-full flex-col items-center justify-center gap-4 text-text">
       <Gift className="text-purple" weight="fill" size="80" />
       <span className="text-center text-lg font-bold">
-        Eba!!! Temos um presente pra você!
+        Yay!!! We have a present for you!
       </span>
       <span className="text-center text-lg font-bold">
-        Percebemos que você tem somente{' '}
-        <span className="text-purple">{formatPoints(currentBalance)}</span>{' '}
-        pontos.
+        We understand that you only have{' '}
+        <span className="text-purple">{formatPoints(currentBalance)}</span> Game
+        Tokens.
         <br />
-        Mas não se preocupe, nesta página você pode resgatar até{' '}
-        <span className="text-purple">300</span> pontos
-        <br /> cada vez que seu saldo estiver abaixo de{' '}
-        <span className="text-purple">10 PPs</span> <br />
-        basta clicar no botão abaixo e contar com a sorte. <br />
+        But don&apos;t worry, on this page you can redeem up to{' '}
+        <span className="text-purple">300</span> Game Tokens
+        <br /> each time your balance is below{' '}
+        <span className="text-purple">10 Game Tokens</span> <br />
+        just click the button below and count on luck. <br />
       </span>
       <button
         onClick={handleRedeemGift}
         className="rounded-md bg-purpleDark px-4 py-2 font-bold text-text transition-colors hover:bg-purple"
       >
-        RESGATAR
+        CLAIM
       </button>
     </div>
   )

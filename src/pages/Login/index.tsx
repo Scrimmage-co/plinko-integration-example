@@ -22,20 +22,20 @@ export function LoginPage() {
 
   async function handleSignIn() {
     await signIn()
-    navigate('/')
+    navigate(state.from || '/')
   }
 
   return (
     <div className="flex h-full flex-col items-center justify-center gap-4 p-2">
       <span className="text-center text-2xl font-bold text-text">
-        Faça login para mostrar seu score para outros jogadores.
+        Log in to start the gamble
       </span>
       <button
         onClick={handleSignIn}
         className="flex items-center gap-2 rounded-md bg-red-500 px-6 py-4 font-bold text-text shadow-sm transition-colors hover:bg-red-700"
       >
         <GoogleLogo size="20" weight="fill" />
-        Login com o Google
+        Login with Google
       </button>
     </div>
   )

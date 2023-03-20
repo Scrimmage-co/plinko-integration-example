@@ -28,6 +28,7 @@ import {
 export function Game() {
   // #region States
   const incrementCurrentBalance = useAuthStore(state => state.incrementBalance)
+  const logBet = useAuthStore(state => state.logBet)
   const engine = Engine.create()
   const [lines, setLines] = useState<LinesType>(16)
   const inGameBallsCount = useGameStore(state => state.gamesRunning)
@@ -251,6 +252,7 @@ export function Game() {
     multiplierSong.play()
     setLastMultipliers(prev => [multiplierValue, prev[0], prev[1], prev[2]])
 
+    await logBet(+ballValue, multiplierValue)
     if (+ballValue <= 0) return
 
     const newBalance = +ballValue * multiplierValue

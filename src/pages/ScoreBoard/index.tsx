@@ -49,10 +49,10 @@ export function ScoreBoardPage() {
       <div className="flex w-4/5 flex-col gap-3 rounded bg-primary p-4 text-text">
         <div className="rounded-md bg-background p-1 text-center text-2xl">
           <strong>TOP 10</strong>
-          <br /> Melhores Jogadores
+          <br /> Best players
           <br />
           <span className="text-xs">
-            clique em um jogador para ver o perfil
+            Click on a player to view the profile
           </span>
         </div>
         {userProfile ? (
@@ -75,7 +75,7 @@ export function ScoreBoardPage() {
                   weight="bold"
                 />
                 <span className="mt-1 text-sm font-bold">
-                  Carregando scores...
+                  Loading scores...
                 </span>
               </div>
             ) : (
@@ -116,7 +116,7 @@ export function ScoreBoardPage() {
         className="mb-4 flex items-center justify-center gap-4 rounded-lg bg-purpleDark p-4 text-lg font-bold text-text shadow-md transition-colors hover:bg-purple"
       >
         <Play weight="fill" size="20" />
-        JOGAR
+        PLAY
       </Link>
     </div>
   )

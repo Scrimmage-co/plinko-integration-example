@@ -1,10 +1,13 @@
-import plinkoLogo from '@images/logo.svg'
+import { httpsCallable } from '@firebase/functions'
+import plinkoLogo from '@images/scrimmageLogo.png'
 import classNames from 'classnames'
 import { Gift, SignOut } from 'phosphor-react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthStore } from 'store/auth'
 import { useGameStore } from 'store/game'
 
+import { functions } from '../../../../lib/firebase'
 import { WalletCard } from '../WalletCard'
 
 export function Navbar() {
@@ -12,6 +15,23 @@ export function Navbar() {
   const currentBalance = useAuthStore(state => state.wallet.balance)
   const isAuth = useAuthStore(state => state.isAuth)
   const signOut = useAuthStore(state => state.signOut)
+  const [scrimBalance, setScrimBalance] = useState(0)
+  const [isScrimmageLinked, setScrimmageLinkStatus] = useState(false)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const userInfo = await httpsCallable<
+        never,
+        { isLinked: boolean; profile: any }
+      >(functions, 'getUserInfo')()
+      console.log(userInfo)
+      setScrimmageLinkStatus(userInfo.data.isLinked)
+      if (userInfo.data.isLinked) {
+        setScrimBalance(userInfo.data.profile.tokens)
+      }
+    }
+    fetchData().then()
+  }, [])
 
   async function handleSignOut() {
     await signOut()
@@ -29,7 +49,11 @@ export function Navbar() {
         )}
       >
         <Link to={inGameBallsCount ? '#!' : '/'}>
-          <img src={plinkoLogo} alt="" className="w-32 md:w-40" />
+          <img
+            src={plinkoLogo}
+            alt=""
+            className="w-16 object-contain md:w-16"
+          />
         </Link>
         {isAuth && (
           <div className="flex items-stretch gap-4">
@@ -37,14 +61,19 @@ export function Navbar() {
               <Link
                 replace
                 to={inGameBallsCount ? '#!' : '/gifts'}
-                title="Presente"
+                title="Gift"
                 className="animate-bounce text-text transition-colors hover:text-purple "
               >
                 <Gift size="32" weight="fill" />
               </Link>
             )}
-
-            <WalletCard balance={currentBalance} showFormatted />
+            <WalletCard
+              balance={currentBalance}
+              showFormatted
+              currencyName="Game Tokens"
+              secondBalance={scrimBalance}
+              secondCurrencyName={isScrimmageLinked ? '$SCRIM' : undefined}
+            />
             <button
               title="Sair"
               onClick={handleSignOut}

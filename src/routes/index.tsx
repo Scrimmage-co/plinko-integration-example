@@ -2,12 +2,14 @@ import { DefaultLayout } from 'layouts/DefaultLayout'
 import { Contribute } from 'pages/Contribute'
 import { PlinkoGamePage } from 'pages/Games/Plinko'
 import { Gifts } from 'pages/Gifts'
+import { Integrate } from 'pages/Integrate'
 import { LoginPage } from 'pages/Login'
 import { ScoreBoardPage } from 'pages/ScoreBoard'
 import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom'
 
 import { NotFound } from './components/NotFound'
 import { RequireAuth } from './components/RequireAuth'
+
 export function Routes() {
   return (
     <BrowserRouter>
@@ -16,6 +18,7 @@ export function Routes() {
           <Route element={<RequireAuth />}>
             <Route path="/plinko" element={<PlinkoGamePage />} />
             <Route path="/gifts" element={<Gifts />} />
+            <Route path="/integrate-scrimmage" element={<Integrate />} />
           </Route>
           <Route path="/" element={<ScoreBoardPage />} />
           <Route path="/login" element={<LoginPage />} />

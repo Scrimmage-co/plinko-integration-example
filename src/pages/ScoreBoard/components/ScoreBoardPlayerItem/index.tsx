@@ -53,13 +53,13 @@ export function ScoreBoardPlayerItem({
       >
         <span className=" max-w-[15ch] overflow-hidden truncate text-left group-hover:text-transparent lg:w-[15ch] lg:max-w-[15ch]">
           {player.uid === user.id ? (
-            <strong>Você</strong>
+            <strong>You</strong>
           ) : (
-            player.name || 'Jogador Anônimo'
+            player.name || 'Gambler Anonymous'
           )}
         </span>
         <span className="absolute left-1/3 hidden animate-pulse text-text group-hover:block">
-          Clique para ir ao perfil
+          Click to go to profile
         </span>
         <strong
           className="text-right text-sm transition-colors group-hover:text-transparent lg:w-[10ch]  lg:max-w-[10ch] lg:text-lg"

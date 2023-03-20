@@ -2,9 +2,10 @@
   "name": "plinko",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:web": "firebase deploy --only hosting"
   },
   "dependencies": {
     "classnames": "^2.3.1",
